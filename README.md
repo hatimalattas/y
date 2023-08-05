@@ -14,7 +14,7 @@ Introducing "Y" - Your Ultimate Chatting App!
 - [Socket.IO](https://socket.io/) Socket.IO is a library that enables low-latency, bidirectional and event-based communication between a client and a server.
 
 - [PostgreSQL](https://www.postgresql.org/) PostgreSQL, also known as Postgres, is a free and open-source relational database management system.
-- 
+
 ### Main Files: Project Structure
 
   ```sh
