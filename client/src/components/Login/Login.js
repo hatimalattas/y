@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StyleLogin.css";
 
-const Login = () => {
-  const [username, setUserName] = useState();
+const Login = ({ socket }) => {
+  const [username, setUserName] = useState("");
   const navigate = useNavigate();
 
   const navigateHome = () => {
-    navigate("/chat");
+    if (username.trim() === "") {
+      alert("Please enter a username.");
+    } else {
+      localStorage.setItem("username", username);
+      socket.emit("newUser", { username, socketID: socket.id });
+      navigate("/chat");
+    }
   };
 
   return (
@@ -15,9 +21,15 @@ const Login = () => {
       <form>
         <div className="sub-container">
           <h1>Chat 'Y'</h1>
-          <input type="text" name="name" placeholder="Username" />
+          <input
+            type="text"
+            name="name"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUserName(e.target.value)}
+          />
 
-          <button type="submit" value="Submit" className="enter-chat">
+          <button type="submit" className="enter-chat" onClick={navigateHome}>
             ENTER
           </button>
         </div>
