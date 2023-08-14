@@ -18,7 +18,7 @@ const UsersList = ({ socket }) => {
       <ul>
         {users.map((user) => (
           <li key={user.socketID}>
-            <img src="https://i.ibb.co/gMjC8n9/user.png" alt="" />{" "}
+            <img src="https://i.ibb.co/gMjC8n9/user.png" alt="default-icon" />{" "}
             <div>
               <h2>{user.username} </h2>
               <h3>
