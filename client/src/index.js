@@ -18,9 +18,7 @@ const providerConfig = {
 };
 
 root.render(
-  <Auth0Provider
-    {...providerConfig}
-  >
+  <Auth0Provider {...providerConfig}>
     <App />
   </Auth0Provider>,
 );

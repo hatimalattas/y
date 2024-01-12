@@ -3,6 +3,8 @@ import Home from './components/Home';
 import ChatPage from './components/ChatPage';
 import socketIO from 'socket.io-client';
 
+const socket = socketIO('http://localhost:4000');لهف
+
 function App() {
   return (
     <BrowserRouter>
