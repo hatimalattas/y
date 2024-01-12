@@ -1,31 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import LoginButton from './components/Auth0/LoginButton';
-import LogoutButton from './components/Auth0/LogoutButton';
-import Profile from './components/Auth0/Profile';
-import { useAuth0 } from '@auth0/auth0-react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import ChatPage from './components/ChatPage';
+import socketIO from 'socket.io-client';
 
 function App() {
-
-  const { isAuthenticated } = useAuth0();
-  if (isAuthenticated) {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <LogoutButton />
-          <Profile />
-        </header>
-      </div>
-    );
-  } else {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <LoginButton />
-        </header>
-      </div>
-    );
-  }
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home socket={socket} />} />
+        <Route path="/chat" element={<ChatPage socket={socket} />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
