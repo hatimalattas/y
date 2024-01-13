@@ -1,0 +1,21 @@
+{
+  "name": "y",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth0/nextjs-auth0": "^3.5.0",
+    "@types/node": "20.11.0",
+    "@types/react": "18.2.47",
+    "@types/react-dom": "18.2.18",
+    "next": "14.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.3.3"
+  }
+}
