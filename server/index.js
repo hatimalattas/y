@@ -20,6 +20,10 @@ socketIO.on('connection', (socket) => {
     socketIO.emit('messageResponse', data);
   });
 
+  socket.on('typing', (data) => {
+    socket.broadcast.emit('typingResponse', data);
+  });
+
   // Listens for a new user joining the chat
   socket.on('newUser', (data) => {
     // Adds the new user to the users array
@@ -35,12 +39,6 @@ socketIO.on('connection', (socket) => {
     // Sends the updated users array to the client
     socketIO.emit('newUserResponse', users);
     socket.disconnect();
-  });
-});
-
-app.get('/api', (req, res) => {
-  res.json({
-    message: 'Hello world',
   });
 });
 
