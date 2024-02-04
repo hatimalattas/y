@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
+import styles from './styles.module.css';
 
-const ChatFooter = ({ socket }) => {
+const ChatFooter = ({ socket, user }: { socket: any; user: any }) => {
     const [message, setMessage] = useState('');
 
     const handleTyping = () => 
-        socket.emit('typing', `${localStorage.getItem('username')} is typing...`);
+        socket.emit('typing', `${user.nickname} is typing...`);
 
-    const handleSendMessage = (e) => {
+    const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (message.trim() && localStorage.getItem('username')) {
+        if (message.trim() && user.nickname) {
             socket.emit('message', {
                 text: message,
-                name: localStorage.getItem('username'),
+                name: user.nickname,
                 id: `${socket.id}${Math.random()}`,
                 socketId: socket.id,
             });
@@ -19,17 +20,17 @@ const ChatFooter = ({ socket }) => {
         setMessage('');
     };
     return (
-        <div className='chat__footer'>
-            <form className='form' onSubmit={handleSendMessage}>
+        <div className={styles.chat__footer}>
+            <form className={styles.form} onSubmit={handleSendMessage}>
                 <input
                     type='text'
                     placeholder='Type a message...'
-                    className='message'
+                    className={styles.message}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={handleTyping}
                 />
-                <button className='sendBtn'>SEND</button>
+                <button className={styles.sendBtn}>SEND</button>
             </form>
         </div>
     );
