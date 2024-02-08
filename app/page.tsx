@@ -1,25 +1,27 @@
-
 'use client'
-import React from "react";
+
+import React, { useEffect } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import styles from './page.module.css'
+import { useRouter } from "next/navigation";
+import styles from './page.module.css';
+import socketIO from 'socket.io-client';
+
+const socket = socketIO('http://localhost:4000');
 
 function index() {
   const { user, error, isLoading } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      socket.emit("newUser", { username: user.nickname, socketId: socket.id });
+      router.push('/chat');
+    }
+  }, [user, isLoading, router])
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
-  if (user) {
-    console.log(user);
-    return (
-      <>
-       <h1> Welcome {user.name}! <a href="/api/auth/logout">Logout</a> </h1>
-        <br></br>
-        Your nickname is {user.nickname}.
-      </>
-    );
-  }
   return (
     <>
       <div className={styles.stars}></div>
