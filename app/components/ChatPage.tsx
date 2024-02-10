@@ -23,6 +23,10 @@ const ChatPage = ({ socket, user }: { socket: any; user: any }) => {
     useEffect(() => {
         socket.on('typingResponse', (data: string) => setTypingStatus(data)); // Update the type of data
     }, [socket]);
+    
+    useEffect(() => {
+        socket.on('stopTypingResponse', (data: string) => setTypingStatus(' ')); // Update the type of data
+    }, [socket]);
 
     return (
         <div className={styles.chat}>
