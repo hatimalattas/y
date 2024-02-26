@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
 import React, { useEffect } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
-import styles from './page.module.css';
-import socketIO from 'socket.io-client';
+import styles from "./page.module.css";
+import socketIO from "socket.io-client";
 
-const socket = socketIO('http://localhost:4000');
+const socket = socketIO("http://localhost:4000");
 
 function index() {
   const { user, error, isLoading } = useUser();
@@ -14,10 +14,15 @@ function index() {
 
   useEffect(() => {
     if (!isLoading && user) {
-      socket.emit("newUser", { username: user.nickname, socketId: socket.id });
-      router.push('/chat');
+      socket.emit("newUser", {
+        username: user.nickname,
+        socketId: socket.id,
+        nicname: user.nickname,
+        picture: user.picture,
+      });
+      router.push("/chat");
     }
-  }, [user, isLoading, router])
+  }, [user, isLoading, router]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
@@ -33,11 +38,13 @@ function index() {
             Discover 'Y' Where People, Passions, and Possibilities Meet.
           </span>
           <br />
-          <a href="/api/auth/login" className={styles.join_button}>Join Now !</a>
+          <a href="/api/auth/login" className={styles.join_button}>
+            Join Now !
+          </a>
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default index;

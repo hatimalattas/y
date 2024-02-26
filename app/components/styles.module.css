@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 .chat {
   width: 100%;
@@ -8,22 +8,67 @@
 }
 .chat__sidebar {
   height: 100%;
-  background-color: #f9f5eb;
+  background-color: #3b3e49;
   flex: 0.2;
   padding: 20px;
   border-right: 1px solid #fdfdfd;
+  margin-left: 20px;
+  overflow-y: scroll;
 }
+
 .chat__main {
   height: 100%;
   flex: 0.8;
 }
 .chat__header {
   margin: 30px 0 20px 0;
+  background: pink;
 }
 .chat__users > * {
   margin-bottom: 10px;
   color: #607eaa;
   font-size: 14px;
+}
+
+.chat__userslist {
+  padding: 10px 0;
+  display: flex;
+  font-size: 12px;
+  color: #fff;
+}
+
+.chat__username {
+  padding-bottom: 10px;
+}
+.chat__avatar {
+  border-radius: 50%;
+  margin-left: 20px;
+  margin-right: 8px;
+  width: 20%;
+}
+.chat__userInfo {
+  display: flex;
+  flex-direction: column;
+}
+.chat__userslist:hover {
+  background-color: #5e616a;
+  padding-left: 100%;
+  margin-left: -100%;
+}
+
+.chat__userstatus {
+  font-size: 12px;
+  color: #7e818a;
+  font-weight: normal;
+}
+
+.chat__status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 7px;
+  background-color: greenyellow;
 }
 .online__users > * {
   margin-bottom: 10px;

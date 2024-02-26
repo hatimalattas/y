@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 
 const ChatFooter = ({ socket, user }: { socket: any; user: any }) => {
