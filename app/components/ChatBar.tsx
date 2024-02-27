@@ -9,12 +9,14 @@ const ChatBar = ({ socket, user }: { socket: any; user: any }) => {
   }, [socket, users]);
   return (
     <div className={styles.chat__sidebar}>
-      <h2>Y</h2>
       <header>
-        <input type="text" placeholder="search" />
+        <input
+          type="text"
+          placeholder="search"
+          className={styles.chat__search}
+        />
       </header>
       <div>
-        <h4 className={styles.chat__header}>Active Users</h4>
         <div className={styles.chat__users}>
           {users.map((user: any) => (
             <ul key={user.socketId}>
