@@ -1,12 +1,22 @@
-import React from 'react';
+import React from "react";
 import { useRouter } from "next/navigation";
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
-const ChatBody = ({ messages, lastMessageRef, typingStatus, user }: { messages: any[], lastMessageRef: React.RefObject<any>, typingStatus: string, user: any }) => {
+const ChatBody = ({
+  messages,
+  lastMessageRef,
+  typingStatus,
+  user,
+}: {
+  messages: any[];
+  lastMessageRef: React.RefObject<any>;
+  typingStatus: string;
+  user: any;
+}) => {
   const router = useRouter();
-  
+
   const handleLogout = () => {
-    window.location.href = '/api/auth/logout';
+    window.location.href = "/api/auth/logout";
   };
 
   return (
@@ -29,7 +39,7 @@ const ChatBody = ({ messages, lastMessageRef, typingStatus, user }: { messages: 
             </div>
           ) : (
             <div className={styles.message__chats} key={message.id}>
-              <p>{message.name}</p>
+              <p className={styles.recipient__name}>{message.name} RORO</p>
               <div className={styles.message__recipient}>
                 <p>{message.text}</p>
               </div>
