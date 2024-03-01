@@ -39,7 +39,7 @@ const ChatBody = ({
             </div>
           ) : (
             <div className={styles.message__chats} key={message.id}>
-              <p className={styles.recipient__name}>{message.name} RORO</p>
+              <p className={styles.recipient__name}>{message.name}</p>
               <div className={styles.message__recipient}>
                 <p>{message.text}</p>
               </div>
