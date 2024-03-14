@@ -6,7 +6,11 @@ import { useRouter } from "next/navigation";
 import styles from './page.module.css';
 import socketIO from 'socket.io-client';
 
-const socket = socketIO('http://localhost:4000');
+const socket = socketIO('http://localhost:4000', {
+  reconnection: true,
+  reconnectionDelay: 1000,
+  reconnectionDelayMax: 5000,
+  reconnectionAttempts: 20});
 
 function index() {
   const { user, error, isLoading } = useUser();
