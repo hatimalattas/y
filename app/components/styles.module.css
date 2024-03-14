@@ -9,7 +9,7 @@
 
 .chat__sidebar {
   height: 100%;
-  background-color: #060415;
+  background-color: #e6ebf5;
   flex: 0.2;
   padding: 20px;
   border-right: 1px solid #fdfdfd;
@@ -192,14 +192,50 @@
   text-align: right;
 }
 .message__recipient {
-  background-color: #f9f5eb;
-  text-align: right;
+  background-color: red;
+  display: flex;
 }
 .message__status {
   position: fixed;
   bottom: 50px;
   font-size: 13px;
   font-style: italic;
+}
+
+.side__navbar {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Adjust based on your layout */
+  justify-content: space-between;
+  background: #fff;
+  color: #7a7f9a;
+}
+
+.navbar__section {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar__logo {
+  /* Adjust padding as needed */
+  padding: 40px;
+  color: #7269ef;
+}
+
+.navbar__menu1 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.navbar__logout {
+  /* Adjust padding as needed */
+  padding: 20px;
+}
+
+.navbar__menu {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsive adjustments */
