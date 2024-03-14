@@ -1,11 +1,15 @@
 import React from 'react';
 import { useRouter } from "next/navigation";
 import styles from './styles.module.css';
+import socketIO from 'socket.io-client';
+
+const socket = socketIO('http://localhost:4000');
 
 const ChatBody = ({ messages, lastMessageRef, typingStatus, user }: { messages: any[], lastMessageRef: React.RefObject<any>, typingStatus: string, user: any }) => {
   const router = useRouter();
   
   const handleLogout = () => {
+    socket.emit('logout', { username: user.nickname, socketId: socket.id });
     window.location.href = '/api/auth/logout';
   };
 
