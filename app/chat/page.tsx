@@ -7,21 +7,20 @@ import { useRouter } from "next/navigation";
 
 const socket = socketIO('http://localhost:4000');
 
-export default function ChatLayout({
-    children, // will be a page or nested layout
-  }: {
-    children: React.ReactNode
-  }) {
-    const { user } = useUser();
+export default function ChatLayout() {
+    const { user, error, isLoading } = useUser();
     const router = useRouter();
+  
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>{error.message}</div>;
+  
     if (user) {
-        return (
-            <ChatPage socket={socket} user={user} />
-        );
+      return (
+        <ChatPage socket={socket} user={user} />
+      );
     } else {
-        return (
-            router.push('/')
-        );
+      return (
+        router.push('/')
+      );
     }
-
-  }
+}
