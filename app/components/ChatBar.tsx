@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+'use client';
+
+import React, { useState, useEffect, use } from "react";
 import styles from "./styles.module.css";
 
 const ChatBar = ({ socket }: { socket: any }) => {
